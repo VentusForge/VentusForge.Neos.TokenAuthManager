@@ -137,6 +137,7 @@ class TokenAuthManagerController extends AbstractModuleController
     {
         $this->view->assignMultiple([
             'token' => $token,
+            'availableRoles' => $this->getSelectableRoles(),
             'expirationOptions' => $this->getExpirationOptions(),
             'showTokenInList' => $this->showTokenInList,
         ]);
@@ -150,16 +151,19 @@ class TokenAuthManagerController extends AbstractModuleController
     public function doRenewAction(
         HashAndRoles $token,
         string $expirationPreset,
+        array $roleIdentifiers = [],
+        ?string $label = null,
         ?\DateTime $expiresAt = null
     ): void {
         $this->assertCustomExpirationIsValid($expirationPreset, $expiresAt, 'renew', $token);
         $resolvedExpiresAt = $this->resolveExpiresAt($expirationPreset, $expiresAt);
+        $roleIdentifiers = $this->filterAllowedRoleIdentifiers($roleIdentifiers);
 
         $renewedToken = HashAndRoles::create(
             Algorithms::generateRandomString(64),
-            $token->getRoles(),
+            $roleIdentifiers,
             $token->getSettings(),
-            $token->getLabel(),
+            $label ?? $token->getLabel(),
             $resolvedExpiresAt
         );
 

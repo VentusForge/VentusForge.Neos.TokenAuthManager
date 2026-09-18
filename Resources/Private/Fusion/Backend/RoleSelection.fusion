@@ -1,0 +1,43 @@
+prototype(VentusForge.Neos.TokenAuthManager:RoleSelection) < prototype(Neos.Fusion:Component) {
+    availableRoles = ${availableRoles}
+    idPrefix = 'roles'
+
+    renderer = afx`
+        <fieldset class="neos-span6">
+            <legend class="neos-control-label">{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:form.roles')}</legend>
+            <table class="neos-table" data-neos-expandable="dropdown-group">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:role.label')}</th>
+                    <th>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:role.description')}</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <Neos.Fusion:Loop items={props.availableRoles} itemName="role" @children="itemRenderer">
+                        <tr>
+                            <td>
+                                <div class="neos-controls">
+                                    <label for={props.idPrefix + '-' + iterator.cycle} class="neos-checkbox" title={role.identifier} data-neos-toggle="tooltip" data-placement="right">
+                                        <Neos.Fusion.Form:Checkbox field.name="roleIdentifiers" field.value={role.identifier} field.multiple attributes.id={props.idPrefix + '-' + iterator.cycle} />
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="neos-controls">
+                                    <label for={props.idPrefix + '-' + iterator.cycle} class="neos-checkbox" title={role.identifier} data-neos-toggle="tooltip" data-placement="right">
+                                        {role.label}
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <label for={props.idPrefix + '-' + iterator.cycle} class="neos-checkbox" title={role.label} data-neos-toggle="tooltip" data-placement="right">{role.description}</label>
+                            </td>
+                        </tr>
+                    </Neos.Fusion:Loop>
+                </tbody>
+            </table>
+        </fieldset>
+    `
+}
