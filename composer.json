@@ -3,7 +3,7 @@
     "license": "GPL-3.0-or-later",
     "type": "neos-plugin",
     "description": "Backend Module to manage auth tokens for Neos",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "require": {
         "php": ">=8.3",
         "neos/neos": "^8.3",
