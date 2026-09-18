@@ -4,6 +4,7 @@ VentusForge:
       allowedRoles: {}
       # allowedRoles:
       #   'Some.Package:ApiUser': true
+      showTokenInList: true
 
 Neos:
   Neos:

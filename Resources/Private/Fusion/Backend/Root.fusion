@@ -9,12 +9,22 @@ prototype(Neos.Fusion.Form:Neos.BackendModule.FieldContainer) {
 
 VentusForge.Neos.TokenAuthManager.Module.TokenAuthManagerController.index = Neos.Fusion:Component {
     tokens = ${tokens}
+    revealedToken = ${revealedToken}
+    showTokenInList = ${showTokenInList}
 
     renderer = afx`
         <div class="neos-module-container">
             <div class="neos-row-fluid">
                 <h1>{Translation.translate('VentusForge.Neos.TokenAuthManager:Modules:token-auth-manager.label')}</h1>
                 <p>{Translation.translate('VentusForge.Neos.TokenAuthManager:Modules:token-auth-manager.description')}</p>
+                <div @if.hasRevealedToken={props.revealedToken} style="background-color: #dff0d8; border: 1px solid #d6e9c6; color: #468847; padding: 14px; margin-bottom: 18px;">
+                    <strong style="display: block; margin-bottom: 6px;">{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:token.revealedTitle')}</strong>
+                    <p style="margin: 0 0 10px 0;">{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:token.revealedHint')}</p>
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                        <input class="neos-span8" type="text" value={props.revealedToken} readonly="readonly" onclick="this.select()" style="font-family: monospace;" />
+                        <VentusForge.Neos.TokenAuthManager:CopyButton token={props.revealedToken} showLabel={true} />
+                    </div>
+                </div>
                 <Neos.Fusion:Link.Action href.action="create" class="neos-button neos-button-primary">
                     <i class="fas fa-plus"></i>
                     {Translation.translate('VentusForge.Neos.TokenAuthManager:Main:action.create')}
@@ -23,7 +33,7 @@ VentusForge.Neos.TokenAuthManager.Module.TokenAuthManagerController.index = Neos
                     <thead>
                     <tr>
                         <th>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:table.name')}</th>
-                        <th>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:table.token')}</th>
+                        <th @if.showTokenInList={props.showTokenInList}>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:table.token')}</th>
                         <th>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:table.roles')}</th>
                         <th>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:table.settings')}</th>
                         <th>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:table.createdAt')}</th>
@@ -34,7 +44,9 @@ VentusForge.Neos.TokenAuthManager.Module.TokenAuthManagerController.index = Neos
                     <Neos.Fusion:Loop items={props.tokens} itemName="token" @children="itemRenderer">
                         <tr>
                             <td>{token.label}</td>
-                            <td>{token.hash}</td>
+                            <td @if.showTokenInList={props.showTokenInList}>
+                                <VentusForge.Neos.TokenAuthManager:MaskedToken token={token.hash} />
+                            </td>
                             <td>
                                 <Neos.Fusion:Loop items={token.roles} itemName="role" @children="itemRenderer">
                                     <span>{role}</span><br />
@@ -114,6 +126,7 @@ VentusForge.Neos.TokenAuthManager.Module.TokenAuthManagerController.index = Neos
 
             </div>
         </div>
+        <VentusForge.Neos.TokenAuthManager:CopyScript />
     `
 }
 
@@ -232,6 +245,7 @@ VentusForge.Neos.TokenAuthManager.Module.TokenAuthManagerController.create = Neo
 VentusForge.Neos.TokenAuthManager.Module.TokenAuthManagerController.renew = Neos.Fusion:Component {
     token = ${token}
     isExpired = ${token.expiresAt && Date.format(token.expiresAt, 'U') < Date.format(Date.now(), 'U')}
+    showTokenInList = ${showTokenInList}
 
     renderer = afx`
         <div class="neos-module-container">
@@ -256,10 +270,10 @@ VentusForge.Neos.TokenAuthManager.Module.TokenAuthManagerController.renew = Neos
                             <input class="neos-span12" type="text" value={token.label} disabled="disabled" />
                         </div>
                     </div>
-                    <div class="neos-control-group">
+                    <div @if.showTokenInList={props.showTokenInList} class="neos-control-group">
                         <label class="neos-control-label">{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:table.token')}</label>
                         <div class="neos-controls">
-                            <input class="neos-span12" type="text" value={token.hash} disabled="disabled" />
+                            <VentusForge.Neos.TokenAuthManager:MaskedToken token={token.hash} />
                         </div>
                     </div>
                     <div class="neos-control-group">
@@ -287,5 +301,6 @@ VentusForge.Neos.TokenAuthManager.Module.TokenAuthManagerController.renew = Neos
                 </Neos.Fusion.Form:Button>
             </div>
         </Neos.Fusion.Form:Form>
+        <VentusForge.Neos.TokenAuthManager:CopyScript @if.showTokenInList={props.showTokenInList} />
     `
 }

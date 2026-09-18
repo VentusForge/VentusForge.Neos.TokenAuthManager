@@ -17,6 +17,12 @@
             <trans-unit id="action.renew" xml:space="preserve">
                 <source>Renew token</source>
             </trans-unit>
+            <trans-unit id="action.copy" xml:space="preserve">
+                <source>Copy</source>
+            </trans-unit>
+            <trans-unit id="action.copied" xml:space="preserve">
+                <source>Token copied</source>
+            </trans-unit>
 
             <trans-unit id="table.name" xml:space="preserve">
                 <source>Name</source>
@@ -63,6 +69,12 @@
             </trans-unit>
             <trans-unit id="token.expiredRenewalAlert" xml:space="preserve">
                 <source>This token has expired and must be renewed.</source>
+            </trans-unit>
+            <trans-unit id="token.revealedTitle" xml:space="preserve">
+                <source>Copy this token now</source>
+            </trans-unit>
+            <trans-unit id="token.revealedHint" xml:space="preserve">
+                <source>This is the only time the full token is shown. Afterwards it will only appear in shortened form.</source>
             </trans-unit>
             <trans-unit id="token.roles" xml:space="preserve">
                 <source>Roles</source>

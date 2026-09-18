@@ -54,6 +54,17 @@ VentusForge:
 
 Roles that are missing or set to `false` are hidden in the create form. Renewing a token keeps its existing roles.
 
+## Hide the token column
+
+By default the list shows a shortened token with a copy button. Set `showTokenInList` to `false` to hide that column and disable copying there. The full token is then only visible once, immediately after creating or renewing it.
+
+```yaml
+VentusForge:
+  Neos:
+    TokenAuthManager:
+      showTokenInList: false
+```
+
 ## Access control
 
 The module is protected by the privilege target `VentusForge.Neos.TokenAuthManager:TokenAuthManager`.

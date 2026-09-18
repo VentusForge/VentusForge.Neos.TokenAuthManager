@@ -1,0 +1,10 @@
+prototype(VentusForge.Neos.TokenAuthManager:MaskedToken) < prototype(Neos.Fusion:Component) {
+    token = ''
+
+    renderer = afx`
+        <span style="display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <code>{String.substr(props.token, 0, 4)}••••{String.substr(props.token, -4)}</code>
+            <VentusForge.Neos.TokenAuthManager:CopyButton token={props.token} />
+        </span>
+    `
+}

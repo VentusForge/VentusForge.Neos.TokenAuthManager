@@ -1,0 +1,11 @@
+prototype(VentusForge.Neos.TokenAuthManager:CopyScript) < prototype(Neos.Fusion:Join) {
+    popup = afx`
+        <div id="token-copy-popup" style="display: none; position: fixed; right: 24px; bottom: 24px; z-index: 10000; background-color: #323232; color: #ffffff; padding: 10px 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
+            {Translation.translate('VentusForge.Neos.TokenAuthManager:Main:action.copied')}
+        </div>
+    `
+    script = Neos.Fusion:Tag {
+        tagName = 'script'
+        content = 'window.VentusForgeCopyToken = function (button) { var token = button.getAttribute("data-token"); if (!token || !navigator.clipboard) { return; } navigator.clipboard.writeText(token).then(function () { var popup = document.getElementById("token-copy-popup"); if (!popup) { return; } popup.style.display = "block"; window.setTimeout(function () { popup.style.display = "none"; }, 2000); }); };'
+    }
+}
