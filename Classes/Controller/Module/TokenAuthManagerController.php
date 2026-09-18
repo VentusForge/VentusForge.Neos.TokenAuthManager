@@ -12,6 +12,7 @@ use Neos\Flow\I18n\Translator;
 use Neos\Flow\Mvc\View\ViewInterface;
 use Neos\Flow\Property\TypeConverter\DateTimeConverter;
 use Neos\Flow\Security\Policy\PolicyService;
+use Neos\Flow\Security\Policy\Role;
 use Neos\Flow\Utility\Algorithms;
 use Neos\Fusion\View\FusionView;
 use Neos\Neos\Controller\Module\AbstractModuleController;
@@ -37,6 +38,12 @@ class TokenAuthManagerController extends AbstractModuleController
 
     #[Flow\Inject]
     protected Translator $translator;
+
+    /**
+     * @var array<string, bool>
+     */
+    #[Flow\InjectConfiguration(path: 'allowedRoles')]
+    protected array $allowedRoles = [];
 
     /**
      * Sets the Fusion path pattern on the view to avoid conflicts with the frontend fusion
@@ -69,7 +76,7 @@ class TokenAuthManagerController extends AbstractModuleController
     public function createAction(): void
     {
         $this->view->assignMultiple([
-            'availableRoles' => $this->policyService->getRoles(),
+            'availableRoles' => $this->getSelectableRoles(),
             'expirationOptions' => $this->getExpirationOptions(),
         ]);
     }
@@ -87,6 +94,7 @@ class TokenAuthManagerController extends AbstractModuleController
     ): void {
         $this->assertCustomExpirationIsValid($expirationPreset, $expiresAt, 'create');
         $resolvedExpiresAt = $this->resolveExpiresAt($expirationPreset, $expiresAt);
+        $roleIdentifiers = $this->filterAllowedRoleIdentifiers($roleIdentifiers);
 
         $token = Algorithms::generateRandomString(64);
         $hashAndRoles = HashAndRoles::create($token, $roleIdentifiers, [], $label, $resolvedExpiresAt);
@@ -146,6 +154,51 @@ class TokenAuthManagerController extends AbstractModuleController
         $this->addFlashMessage($this->translate('flash.tokenRenewed'));
 
         $this->redirect('index');
+    }
+
+    /**
+     * @return array<string, Role>
+     */
+    private function getSelectableRoles(): array
+    {
+        return array_filter(
+            $this->policyService->getRoles(),
+            fn (Role $role): bool => $this->isRoleAllowed($role->getIdentifier())
+        );
+    }
+
+    /**
+     * @param string[] $roleIdentifiers
+     * @return string[]
+     */
+    private function filterAllowedRoleIdentifiers(array $roleIdentifiers): array
+    {
+        $allowedRoleIdentifiers = [];
+        $disallowedRoleIdentifiers = [];
+
+        foreach ($roleIdentifiers as $roleIdentifier) {
+            if ($this->isRoleAllowed($roleIdentifier)) {
+                $allowedRoleIdentifiers[] = $roleIdentifier;
+                continue;
+            }
+
+            $disallowedRoleIdentifiers[] = $roleIdentifier;
+        }
+
+        if ($disallowedRoleIdentifiers !== []) {
+            $this->addFlashMessage(
+                $this->translate('flash.disallowedRolesFiltered', [implode(', ', $disallowedRoleIdentifiers)]),
+                '',
+                Message::SEVERITY_WARNING
+            );
+        }
+
+        return $allowedRoleIdentifiers;
+    }
+
+    private function isRoleAllowed(string $roleIdentifier): bool
+    {
+        return ($this->allowedRoles[$roleIdentifier] ?? false) === true;
     }
 
     /**
