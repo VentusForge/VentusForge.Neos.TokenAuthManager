@@ -1,0 +1,27 @@
+name: Format (PHP)
+
+on:
+  pull_request:
+    types: [review_requested, ready_for_review]
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate token
+        uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          app-id: ${{ secrets.BUILD_APP_ID }}
+          private-key: ${{ secrets.BUILD_APP_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Run PHP-CS-Fixer
+        uses: erkenes/php-cs-fixer-action@php8.3-1.0.0
+
+      - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9
+        with:
+          commit_message: 'fix: Apply php-cs-fixer changes'

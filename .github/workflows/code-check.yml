@@ -1,0 +1,93 @@
+name: Code Check
+
+on:
+  pull_request:
+    types: [review_requested, ready_for_review]
+
+jobs:
+  phpmd-check:
+    name: PHPMD Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code into the workspace
+        uses: actions/checkout@v6
+
+      - name: Run phpmd "cleancode"
+        uses: mikebronner/action-reviewdog-phpmd@97fa17b02d4a85d0635ca7d0119b4debfb63bb61
+        with:
+          name: 'PHPMD (cleancode)'
+          github_token: '${{ github.token }}'
+          level: 'error'
+          reporter: 'github-pr-check'
+          standard: 'cleancode'
+          target_directory: 'App/DistributionPackages'
+          exclude: '*/Migrations/Mysql/Version*'
+
+      - name: Run phpmd "codesize"
+        uses: mikebronner/action-reviewdog-phpmd@97fa17b02d4a85d0635ca7d0119b4debfb63bb61
+        with:
+          name: 'PHPMD (codesize)'
+          github_token: '${{ github.token }}'
+          level: 'error'
+          reporter: 'github-pr-check'
+          standard: 'codesize'
+          target_directory: 'App/DistributionPackages'
+          exclude: '*/Migrations/Mysql/Version*'
+
+      - name: Run phpmd "controversial"
+        uses: mikebronner/action-reviewdog-phpmd@97fa17b02d4a85d0635ca7d0119b4debfb63bb61
+        with:
+          name: 'PHPMD (controversial)'
+          github_token: '${{ github.token }}'
+          level: 'error'
+          reporter: 'github-pr-check'
+          standard: 'controversial'
+          target_directory: 'App/DistributionPackages'
+          exclude: '*/Migrations/Mysql/Version*'
+
+      - name: Run phpmd "design"
+        uses: mikebronner/action-reviewdog-phpmd@97fa17b02d4a85d0635ca7d0119b4debfb63bb61
+        with:
+          name: 'PHPMD (design)'
+          github_token: '${{ github.token }}'
+          level: 'error'
+          reporter: 'github-pr-check'
+          standard: 'design'
+          target_directory: 'App/DistributionPackages'
+          exclude: '*/Migrations/Mysql/Version*'
+
+      - name: Run phpmd "naming"
+        uses: mikebronner/action-reviewdog-phpmd@97fa17b02d4a85d0635ca7d0119b4debfb63bb61
+        with:
+          name: 'PHPMD (naming)'
+          github_token: '${{ github.token }}'
+          level: 'error'
+          reporter: 'github-pr-check'
+          standard: 'phpmd.ruleset.naming.xml'
+          target_directory: 'App/DistributionPackages'
+          exclude: '*/Migrations/Mysql/Version*'
+
+      - name: Run phpmd "unusedcode"
+        uses: mikebronner/action-reviewdog-phpmd@97fa17b02d4a85d0635ca7d0119b4debfb63bb61
+        with:
+          name: 'PHPMD (unusedcode)'
+          github_token: '${{ github.token }}'
+          level: 'error'
+          reporter: 'github-pr-check'
+          standard: 'unusedcode'
+          target_directory: 'App/DistributionPackages'
+          exclude: '*/Migrations/Mysql/Version*'
+
+  yaml-check:
+    name: YAML Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code into the workspace
+        uses: actions/checkout@v6
+
+      - name: Run YAML lint
+        uses: reviewdog/action-yamllint@1b1b6df34e7b178d78d8432a68b4f5ddc95b1c7e
+        with:
+          level: 'error'
+          reporter: 'github-pr-check'
+          yamllint_flags: '.'

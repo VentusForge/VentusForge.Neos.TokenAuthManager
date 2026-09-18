@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="VentusForge.Neos.TokenAuthManager" source-language="en" datatype="plaintext" target-language="de">
+        <body>
+            <trans-unit id="action.create" xml:space="preserve">
+                <source>Create token</source>
+                <target xml:lang="de">Token erstellen</target>
+            </trans-unit>
+            <trans-unit id="action.cancel" xml:space="preserve">
+                <source>Cancel</source>
+                <target xml:lang="de">Abbrechen</target>
+            </trans-unit>
+            <trans-unit id="action.delete" xml:space="preserve">
+                <source>Delete</source>
+                <target xml:lang="de">Löschen</target>
+            </trans-unit>
+            <trans-unit id="action.update" xml:space="preserve">
+                <source>Update</source>
+                <target xml:lang="de">Aktualisieren</target>
+            </trans-unit>
+            <trans-unit id="action.renew" xml:space="preserve">
+                <source>Renew token</source>
+                <target xml:lang="de">Token erneuern</target>
+            </trans-unit>
+
+            <trans-unit id="table.name" xml:space="preserve">
+                <source>Name</source>
+                <target xml:lang="de">Name</target>
+            </trans-unit>
+            <trans-unit id="table.token" xml:space="preserve">
+                <source>Token</source>
+                <target xml:lang="de">Token</target>
+            </trans-unit>
+            <trans-unit id="table.roles" xml:space="preserve">
+                <source>Roles</source>
+                <target xml:lang="de">Rollen</target>
+            </trans-unit>
+            <trans-unit id="table.settings" xml:space="preserve">
+                <source>Additional settings</source>
+                <target xml:lang="de">Weitere Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="table.createdAt" xml:space="preserve">
+                <source>Created at</source>
+                <target xml:lang="de">Erstellt am</target>
+            </trans-unit>
+            <trans-unit id="table.expiresAt" xml:space="preserve">
+                <source>Expires on</source>
+                <target xml:lang="de">Läuft ab am</target>
+            </trans-unit>
+
+            <trans-unit id="token.label" xml:space="preserve">
+                <source>Label</source>
+                <target xml:lang="de">Name</target>
+            </trans-unit>
+            <trans-unit id="token.expiresAt" xml:space="preserve">
+                <source>Expires on</source>
+                <target xml:lang="de">Läuft ab am</target>
+            </trans-unit>
+            <trans-unit id="token.currentExpiresAt" xml:space="preserve">
+                <source>Current expiration date</source>
+                <target xml:lang="de">Aktuelles Ablaufdatum</target>
+            </trans-unit>
+            <trans-unit id="token.expiresAtCustom" xml:space="preserve">
+                <source>Custom expiration date</source>
+                <target xml:lang="de">Benutzerdefiniertes Ablaufdatum</target>
+            </trans-unit>
+            <trans-unit id="token.noExpiration" xml:space="preserve">
+                <source>No expiration date!</source>
+                <target xml:lang="de">Kein Ablaufdatum!</target>
+            </trans-unit>
+            <trans-unit id="token.expiresOnHelper" xml:space="preserve">
+                <source>The token will expire on the selected date.</source>
+                <target xml:lang="de">Der Token läuft am ausgewählten Datum ab.</target>
+            </trans-unit>
+            <trans-unit id="token.noExpirationHelper" xml:space="preserve">
+                <source>The token will not expire if no expiration date is selected.</source>
+                <target xml:lang="de">Ohne Ablaufdatum läuft der Token nicht ab.</target>
+            </trans-unit>
+            <trans-unit id="token.expired" xml:space="preserve">
+                <source>Expired!</source>
+                <target xml:lang="de">Abgelaufen!</target>
+            </trans-unit>
+            <trans-unit id="token.expiredRenewalAlert" xml:space="preserve">
+                <source>This token has expired and must be renewed.</source>
+                <target xml:lang="de">Dieser Token ist abgelaufen und muss erneuert werden.</target>
+            </trans-unit>
+            <trans-unit id="token.roles" xml:space="preserve">
+                <source>Roles</source>
+                <target xml:lang="de">Rollen</target>
+            </trans-unit>
+
+            <trans-unit id="form.information" xml:space="preserve">
+                <source>Information</source>
+                <target xml:lang="de">Informationen</target>
+            </trans-unit>
+            <trans-unit id="form.roles" xml:space="preserve">
+                <source>Roles</source>
+                <target xml:lang="de">Rollen</target>
+            </trans-unit>
+            <trans-unit id="role.label" xml:space="preserve">
+                <source>Label</source>
+                <target xml:lang="de">Label</target>
+            </trans-unit>
+            <trans-unit id="role.description" xml:space="preserve">
+                <source>Description</source>
+                <target xml:lang="de">Beschreibung</target>
+            </trans-unit>
+
+            <trans-unit id="delete.confirm.title" xml:space="preserve">
+                <source>Do you really want to delete this token?</source>
+                <target xml:lang="de">Wollen Sie den Token wirklich löschen?</target>
+            </trans-unit>
+            <trans-unit id="delete.confirm.message" xml:space="preserve">
+                <source>The token will be permanently deleted.</source>
+                <target xml:lang="de">Hiermit wird der Token unwiderruflich gelöscht.</target>
+            </trans-unit>
+            <trans-unit id="delete.confirm.irreversible" xml:space="preserve">
+                <source>This action cannot be undone.</source>
+                <target xml:lang="de">Dieser Vorgang kann nicht rückgängig gemacht werden.</target>
+            </trans-unit>
+
+            <trans-unit id="dateTime.format" xml:space="preserve">
+                <source>Y-m-d H:i</source>
+                <target xml:lang="de">d.m.Y H:i</target>
+            </trans-unit>
+            <trans-unit id="date.format" xml:space="preserve">
+                <source>Y-m-d</source>
+                <target xml:lang="de">d.m.Y</target>
+            </trans-unit>
+
+            <trans-unit id="expiration.days" xml:space="preserve">
+                <source>{0} days</source>
+                <target xml:lang="de">{0} Tage</target>
+            </trans-unit>
+            <trans-unit id="expiration.custom" xml:space="preserve">
+                <source>Custom</source>
+                <target xml:lang="de">Benutzerdefiniert</target>
+            </trans-unit>
+            <trans-unit id="expiration.none" xml:space="preserve">
+                <source>No expiration</source>
+                <target xml:lang="de">Kein Ablaufdatum</target>
+            </trans-unit>
+
+            <trans-unit id="renew.description" xml:space="preserve">
+                <source>Renewing replaces the token hash. The previous token will stop working immediately.</source>
+                <target xml:lang="de">Beim Erneuern wird der Token-Hash ersetzt. Der bisherige Token funktioniert danach nicht mehr.</target>
+            </trans-unit>
+
+            <trans-unit id="flash.tokenCreated" xml:space="preserve">
+                <source>The token was created successfully.</source>
+                <target xml:lang="de">Token wurde erfolgreich erstellt.</target>
+            </trans-unit>
+            <trans-unit id="flash.tokenUpdated" xml:space="preserve">
+                <source>The token was updated successfully.</source>
+                <target xml:lang="de">Token wurde erfolgreich aktualisiert.</target>
+            </trans-unit>
+            <trans-unit id="flash.tokenDeleted" xml:space="preserve">
+                <source>The token was deleted successfully.</source>
+                <target xml:lang="de">Token wurde erfolgreich gelöscht.</target>
+            </trans-unit>
+            <trans-unit id="flash.tokenRenewed" xml:space="preserve">
+                <source>The token was renewed successfully.</source>
+                <target xml:lang="de">Token wurde erfolgreich erneuert.</target>
+            </trans-unit>
+            <trans-unit id="flash.customExpirationRequired" xml:space="preserve">
+                <source>Please select a custom expiration date.</source>
+                <target xml:lang="de">Bitte ein benutzerdefiniertes Ablaufdatum wählen.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

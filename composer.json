@@ -1,0 +1,17 @@
+{
+    "name": "ventusforge/neos-token-auth-manager",
+    "license": "GPL-3.0-or-later",
+    "type": "neos-plugin",
+    "description": "Backend Module to manage auth tokens for Neos",
+    "version": "0.0.1",
+    "require": {
+        "php": ">=8.3",
+        "neos/neos": "^8.3",
+        "flownative/token-authentication": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "VentusForge\\Neos\\TokenAuthManager\\": "Classes"
+        }
+    }
+}
