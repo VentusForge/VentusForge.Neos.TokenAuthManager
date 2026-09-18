@@ -22,6 +22,14 @@
                 <source>Renew token</source>
                 <target xml:lang="de">Token erneuern</target>
             </trans-unit>
+            <trans-unit id="action.copy" xml:space="preserve">
+                <source>Copy</source>
+                <target xml:lang="de">Kopieren</target>
+            </trans-unit>
+            <trans-unit id="action.copied" xml:space="preserve">
+                <source>Token copied</source>
+                <target xml:lang="de">Token kopiert</target>
+            </trans-unit>
 
             <trans-unit id="table.name" xml:space="preserve">
                 <source>Name</source>
@@ -83,6 +91,14 @@
             <trans-unit id="token.expiredRenewalAlert" xml:space="preserve">
                 <source>This token has expired and must be renewed.</source>
                 <target xml:lang="de">Dieser Token ist abgelaufen und muss erneuert werden.</target>
+            </trans-unit>
+            <trans-unit id="token.revealedTitle" xml:space="preserve">
+                <source>Copy this token now</source>
+                <target xml:lang="de">Diesen Token jetzt kopieren</target>
+            </trans-unit>
+            <trans-unit id="token.revealedHint" xml:space="preserve">
+                <source>This is the only time the full token is shown. Afterwards it will only appear in shortened form.</source>
+                <target xml:lang="de">Der vollständige Token wird nur dieses eine Mal angezeigt. Danach erscheint er nur noch gekürzt.</target>
             </trans-unit>
             <trans-unit id="token.roles" xml:space="preserve">
                 <source>Roles</source>

@@ -13,6 +13,7 @@ use Neos\Flow\Mvc\View\ViewInterface;
 use Neos\Flow\Property\TypeConverter\DateTimeConverter;
 use Neos\Flow\Security\Policy\PolicyService;
 use Neos\Flow\Security\Policy\Role;
+use Neos\Flow\Session\SessionInterface;
 use Neos\Flow\Utility\Algorithms;
 use Neos\Fusion\View\FusionView;
 use Neos\Neos\Controller\Module\AbstractModuleController;
@@ -24,6 +25,8 @@ use Neos\Neos\Controller\Module\AbstractModuleController;
 class TokenAuthManagerController extends AbstractModuleController
 {
     private const EXPIRATION_PRESETS_IN_DAYS = [7, 30, 60, 90];
+
+    private const REVEALED_TOKEN_SESSION_KEY = 'VentusForge.Neos.TokenAuthManager.revealedToken';
 
     /**
      * @var FusionView
@@ -45,6 +48,12 @@ class TokenAuthManagerController extends AbstractModuleController
     #[Flow\InjectConfiguration(path: 'allowedRoles')]
     protected array $allowedRoles = [];
 
+    #[Flow\InjectConfiguration(path: 'showTokenInList')]
+    protected bool $showTokenInList = true;
+
+    #[Flow\Inject]
+    protected SessionInterface $session;
+
     /**
      * Sets the Fusion path pattern on the view to avoid conflicts with the frontend fusion
      *
@@ -61,7 +70,11 @@ class TokenAuthManagerController extends AbstractModuleController
      */
     public function indexAction(): void
     {
-        $this->view->assign('tokens', $this->hashAndRolesRepository->findAll());
+        $this->view->assignMultiple([
+            'tokens' => $this->hashAndRolesRepository->findAll(),
+            'revealedToken' => $this->consumeRevealedToken(),
+            'showTokenInList' => $this->showTokenInList,
+        ]);
     }
 
     public function removeAction(HashAndRoles $token): void
@@ -99,6 +112,7 @@ class TokenAuthManagerController extends AbstractModuleController
         $token = Algorithms::generateRandomString(64);
         $hashAndRoles = HashAndRoles::create($token, $roleIdentifiers, [], $label, $resolvedExpiresAt);
         $this->hashAndRolesRepository->add($hashAndRoles);
+        $this->rememberRevealedToken($token);
 
         $this->addFlashMessage($this->translate('flash.tokenCreated'));
 
@@ -124,6 +138,7 @@ class TokenAuthManagerController extends AbstractModuleController
         $this->view->assignMultiple([
             'token' => $token,
             'expirationOptions' => $this->getExpirationOptions(),
+            'showTokenInList' => $this->showTokenInList,
         ]);
     }
 
@@ -150,6 +165,7 @@ class TokenAuthManagerController extends AbstractModuleController
 
         $this->hashAndRolesRepository->add($renewedToken);
         $this->hashAndRolesRepository->remove($token);
+        $this->rememberRevealedToken($renewedToken->getHash());
 
         $this->addFlashMessage($this->translate('flash.tokenRenewed'));
 
@@ -285,6 +301,27 @@ class TokenAuthManagerController extends AbstractModuleController
         $date->setTime(23, 59, 59);
 
         return $date;
+    }
+
+    private function rememberRevealedToken(string $token): void
+    {
+        if (!$this->session->isStarted()) {
+            $this->session->start();
+        }
+
+        $this->session->putData(self::REVEALED_TOKEN_SESSION_KEY, $token);
+    }
+
+    private function consumeRevealedToken(): ?string
+    {
+        if (!$this->session->isStarted() || !$this->session->hasKey(self::REVEALED_TOKEN_SESSION_KEY)) {
+            return null;
+        }
+
+        $token = $this->session->getData(self::REVEALED_TOKEN_SESSION_KEY);
+        $this->session->putData(self::REVEALED_TOKEN_SESSION_KEY, null);
+
+        return is_string($token) ? $token : null;
     }
 
     private function translate(string $id, array $arguments = []): string

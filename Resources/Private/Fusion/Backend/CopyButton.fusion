@@ -1,0 +1,17 @@
+prototype(VentusForge.Neos.TokenAuthManager:CopyButton) < prototype(Neos.Fusion:Component) {
+    token = ''
+    showLabel = false
+
+    renderer = afx`
+        <button
+            type="button"
+            class="neos-button"
+            title={Translation.translate('VentusForge.Neos.TokenAuthManager:Main:action.copy')}
+            data-token={props.token}
+            onclick="window.VentusForgeCopyToken && window.VentusForgeCopyToken(this)"
+        >
+            <i class="fas fa-copy"></i>
+            <span @if.showLabel={props.showLabel}>{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:action.copy')}</span>
+        </button>
+    `
+}
