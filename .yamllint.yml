@@ -1,0 +1,11 @@
+# Docs: https://yamllint.readthedocs.io/en/stable/configuration.html
+extends: default
+
+ignore: |
+  /App/Build
+
+rules:
+  line-length: disable
+  document-start: disable
+  truthy:
+    check-keys: false

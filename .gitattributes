@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+/.github                        export-ignore
+/.gitattributes                 export-ignore
+/.gitignore                     export-ignore
+/.php-cs-fixer.dist.php         export-ignore
+/.release-please-manifest.json  export-ignore
+/.yamllint.yml                  export-ignore
+/.editorconfig                  export-ignore
+/phpmd.ruleset.cleancode.xml    export-ignore
+/phpmd.ruleset.naming.xml       export-ignore
+/release-please-config.json     export-ignore

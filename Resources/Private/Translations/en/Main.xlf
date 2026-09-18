@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="VentusForge.Neos.TokenAuthManager" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="action.create" xml:space="preserve">
+                <source>Create token</source>
+            </trans-unit>
+            <trans-unit id="action.cancel" xml:space="preserve">
+                <source>Cancel</source>
+            </trans-unit>
+            <trans-unit id="action.delete" xml:space="preserve">
+                <source>Delete</source>
+            </trans-unit>
+            <trans-unit id="action.update" xml:space="preserve">
+                <source>Update</source>
+            </trans-unit>
+            <trans-unit id="action.renew" xml:space="preserve">
+                <source>Renew token</source>
+            </trans-unit>
+
+            <trans-unit id="table.name" xml:space="preserve">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="table.token" xml:space="preserve">
+                <source>Token</source>
+            </trans-unit>
+            <trans-unit id="table.roles" xml:space="preserve">
+                <source>Roles</source>
+            </trans-unit>
+            <trans-unit id="table.settings" xml:space="preserve">
+                <source>Additional settings</source>
+            </trans-unit>
+            <trans-unit id="table.createdAt" xml:space="preserve">
+                <source>Created at</source>
+            </trans-unit>
+            <trans-unit id="table.expiresAt" xml:space="preserve">
+                <source>Expires on</source>
+            </trans-unit>
+
+            <trans-unit id="token.label" xml:space="preserve">
+                <source>Label</source>
+            </trans-unit>
+            <trans-unit id="token.expiresAt" xml:space="preserve">
+                <source>Expires on</source>
+            </trans-unit>
+            <trans-unit id="token.currentExpiresAt" xml:space="preserve">
+                <source>Current expiration date</source>
+            </trans-unit>
+            <trans-unit id="token.expiresAtCustom" xml:space="preserve">
+                <source>Custom expiration date</source>
+            </trans-unit>
+            <trans-unit id="token.noExpiration" xml:space="preserve">
+                <source>No expiration date!</source>
+            </trans-unit>
+            <trans-unit id="token.expiresOnHelper" xml:space="preserve">
+                <source>The token will expire on the selected date.</source>
+            </trans-unit>
+            <trans-unit id="token.noExpirationHelper" xml:space="preserve">
+                <source>The token will not expire if no expiration date is selected.</source>
+            </trans-unit>
+            <trans-unit id="token.expired" xml:space="preserve">
+                <source>Expired!</source>
+            </trans-unit>
+            <trans-unit id="token.expiredRenewalAlert" xml:space="preserve">
+                <source>This token has expired and must be renewed.</source>
+            </trans-unit>
+            <trans-unit id="token.roles" xml:space="preserve">
+                <source>Roles</source>
+            </trans-unit>
+
+            <trans-unit id="form.information" xml:space="preserve">
+                <source>Information</source>
+            </trans-unit>
+            <trans-unit id="form.roles" xml:space="preserve">
+                <source>Roles</source>
+            </trans-unit>
+            <trans-unit id="role.label" xml:space="preserve">
+                <source>Label</source>
+            </trans-unit>
+            <trans-unit id="role.description" xml:space="preserve">
+                <source>Description</source>
+            </trans-unit>
+
+            <trans-unit id="delete.confirm.title" xml:space="preserve">
+                <source>Do you really want to delete this token?</source>
+            </trans-unit>
+            <trans-unit id="delete.confirm.message" xml:space="preserve">
+                <source>The token will be permanently deleted.</source>
+            </trans-unit>
+            <trans-unit id="delete.confirm.irreversible" xml:space="preserve">
+                <source>This action cannot be undone.</source>
+            </trans-unit>
+
+            <trans-unit id="dateTime.format" xml:space="preserve">
+                <source>Y-m-d H:i</source>
+            </trans-unit>
+            <trans-unit id="date.format" xml:space="preserve">
+                <source>Y-m-d</source>
+            </trans-unit>
+
+            <trans-unit id="expiration.days" xml:space="preserve">
+                <source>{0} days</source>
+            </trans-unit>
+            <trans-unit id="expiration.custom" xml:space="preserve">
+                <source>Custom</source>
+            </trans-unit>
+            <trans-unit id="expiration.none" xml:space="preserve">
+                <source>No expiration</source>
+            </trans-unit>
+
+            <trans-unit id="renew.description" xml:space="preserve">
+                <source>Renewing replaces the token hash. The previous token will stop working immediately.</source>
+            </trans-unit>
+
+            <trans-unit id="flash.tokenCreated" xml:space="preserve">
+                <source>The token was created successfully.</source>
+            </trans-unit>
+            <trans-unit id="flash.tokenUpdated" xml:space="preserve">
+                <source>The token was updated successfully.</source>
+            </trans-unit>
+            <trans-unit id="flash.tokenDeleted" xml:space="preserve">
+                <source>The token was deleted successfully.</source>
+            </trans-unit>
+            <trans-unit id="flash.tokenRenewed" xml:space="preserve">
+                <source>The token was renewed successfully.</source>
+            </trans-unit>
+            <trans-unit id="flash.customExpirationRequired" xml:space="preserve">
+                <source>Please select a custom expiration date.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

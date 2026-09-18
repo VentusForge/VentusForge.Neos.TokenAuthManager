@@ -1,0 +1,23 @@
+prototype(VentusForge.Neos.TokenAuthManager:ExpirationPresetField) < prototype(Neos.Fusion:Component) {
+    expirationOptions = ${expirationOptions}
+
+    renderer = afx`
+        <Neos.Fusion.Form:Neos.BackendModule.FieldContainer field.name="expirationPreset" field.value="30" label="token.expiresAt">
+            <Neos.Fusion.Form:Select attributes.class="neos-span12" attributes.id="expiration-preset" attributes.onchange="document.getElementById('expiration-custom').style.display = this.value === 'custom' ? 'block' : 'none'">
+                <Neos.Fusion:Loop items={props.expirationOptions} itemName="expirationOption" @children="itemRenderer">
+                    <Neos.Fusion.Form:Select.Option option.value={expirationOption.value}>{expirationOption.label} ({expirationOption.date})</Neos.Fusion.Form:Select.Option>
+                </Neos.Fusion:Loop>
+                <Neos.Fusion.Form:Select.Option option.value="custom">{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:expiration.custom')}</Neos.Fusion.Form:Select.Option>
+                <Neos.Fusion.Form:Select.Option option.value="none">{Translation.translate('VentusForge.Neos.TokenAuthManager:Main:expiration.none')}</Neos.Fusion.Form:Select.Option>
+            </Neos.Fusion.Form:Select>
+            <div class="neos-help-block" style="margin-top: 5px;">
+                {Translation.translate('VentusForge.Neos.TokenAuthManager:Main:token.expiresOnHelper')}
+            </div>
+        </Neos.Fusion.Form:Neos.BackendModule.FieldContainer>
+        <div id="expiration-custom" style="display: none;">
+            <Neos.Fusion.Form:Neos.BackendModule.FieldContainer field.name="expiresAt" label="token.expiresAtCustom">
+                <Neos.Fusion.Form:Date attributes.class="neos-span12" />
+            </Neos.Fusion.Form:Neos.BackendModule.FieldContainer>
+        </div>
+    `
+}

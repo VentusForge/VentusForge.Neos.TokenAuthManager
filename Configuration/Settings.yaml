@@ -1,0 +1,20 @@
+Neos:
+  Neos:
+    modules:
+      administration:
+        submodules:
+          'token-auth-manager':
+            label: 'VentusForge.Neos.TokenAuthManager:Modules:token-auth-manager.label'
+            description: 'VentusForge.Neos.TokenAuthManager:Modules:token-auth-manager.description'
+            icon: fas fa-key
+            controller: 'VentusForge\Neos\TokenAuthManager\Controller\Module\TokenAuthManagerController'
+            privilegeTarget: 'VentusForge.Neos.TokenAuthManager:TokenAuthManager'
+    userInterface:
+      translation:
+        autoInclude:
+          'VentusForge.Neos.TokenAuthManager':
+            - Main
+            - Modules
+    fusion:
+      autoInclude:
+        'VentusForge.Neos.TokenAuthManager': true

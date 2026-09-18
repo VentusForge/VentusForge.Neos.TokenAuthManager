@@ -1,0 +1,21 @@
+{
+    "release-type": "simple",
+    "include-v-in-tag": false,
+    "draft": false,
+    "prerelease": false,
+    "bump-minor-pre-major": false,
+    "bump-path-for-minor-pre-major": false,
+    "versioning": "default",
+    "extra-files": [
+        {
+            "type": "json",
+            "path": "composer.json",
+            "jsonpath": "$.version"
+        }
+    ],
+    "packages": {
+        ".": {
+            "changelog-path": "CHANGELOG.md"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="VentusForge.Neos.TokenAuthManager" source-language="en" datatype="plaintext" target-language="de">
+        <body>
+            <trans-unit id="token-auth-manager.label" xml:space="preserve">
+                <source>Token Auth Manager</source>
+                <target xml:lang="de">Token Auth Manager</target>
+            </trans-unit>
+            <trans-unit id="token-auth-manager.description" xml:space="preserve">
+                <source>The Token Auth Manager is used to manage the token authentication.</source>
+                <target xml:lang="de">Der Token Auth Manager wird verwendet, um die Token-Authentifizierung zu verwalten.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

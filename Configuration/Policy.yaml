@@ -1,0 +1,11 @@
+privilegeTargets:
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'VentusForge.Neos.TokenAuthManager:TokenAuthManager':
+      label: General access to token auth manager
+      matcher: 'method(VentusForge\Neos\TokenAuthManager\Controller\Module\TokenAuthManagerController->(index|create|add|remove|edit|update|renew|doRenew)Action())'
+
+roles:
+  'Neos.Neos:Administrator':
+    privileges:
+      - privilegeTarget: 'VentusForge.Neos.TokenAuthManager:TokenAuthManager'
+        permission: GRANT
