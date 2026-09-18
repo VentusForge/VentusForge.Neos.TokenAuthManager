@@ -40,6 +40,20 @@ The label of an existing token can be updated from the edit view. Roles and the 
 
 Delete a token from the list. This is permanent; authenticated requests using that token will fail afterwards.
 
+## Role allowlist
+
+Only roles explicitly set to `true` are shown when creating a token. Submitted roles are checked again on save. Disallowed roles are dropped; the token is still created and a warning flash message lists the ignored roles.
+
+```yaml
+VentusForge:
+  Neos:
+    TokenAuthManager:
+      allowedRoles:
+        'Some.Package:ApiUser': true
+```
+
+Roles that are missing or set to `false` are hidden in the create form. Renewing a token keeps its existing roles.
+
 ## Access control
 
 The module is protected by the privilege target `VentusForge.Neos.TokenAuthManager:TokenAuthManager`.

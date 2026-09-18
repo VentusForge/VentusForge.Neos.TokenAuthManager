@@ -127,6 +127,9 @@
             <trans-unit id="flash.customExpirationRequired" xml:space="preserve">
                 <source>Please select a custom expiration date.</source>
             </trans-unit>
+            <trans-unit id="flash.disallowedRolesFiltered" xml:space="preserve">
+                <source>The following roles are not allowed and were ignored: {0}</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

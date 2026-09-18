@@ -166,6 +166,10 @@
                 <source>Please select a custom expiration date.</source>
                 <target xml:lang="de">Bitte ein benutzerdefiniertes Ablaufdatum wählen.</target>
             </trans-unit>
+            <trans-unit id="flash.disallowedRolesFiltered" xml:space="preserve">
+                <source>The following roles are not allowed and were ignored: {0}</source>
+                <target xml:lang="de">Folgende Rollen sind nicht erlaubt und wurden ignoriert: {0}</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
