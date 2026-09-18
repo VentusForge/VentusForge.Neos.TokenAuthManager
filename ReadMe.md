@@ -34,7 +34,7 @@ A 64-character random token is generated and stored. Use the value shown in the 
 
 ### Edit a token
 
-The label of an existing token can be updated from the edit view. Roles and the token value itself cannot be changed after creation.
+The label of an existing token can be updated from the edit and renew views. Roles and the expiration date are shown as read-only on the edit page and can be changed when renewing the token.
 
 ### Delete a token
 
@@ -52,7 +52,7 @@ VentusForge:
         'Some.Package:ApiUser': true
 ```
 
-Roles that are missing or set to `false` are hidden in the create form. Renewing a token keeps its existing roles.
+Roles that are missing or set to `false` are hidden in the create and renew forms. Existing roles of a token are preselected when renewing it.
 
 ## Hide the token column
 
